@@ -1,0 +1,31 @@
+<!doctype html>
+<html>
+<head>
+  <title>ルート地図</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link
+    rel="stylesheet"
+    href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+  />
+  <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+  <style>
+    #map { height: 500px; }
+  </style>
+</head>
+<body class="container py-5">
+  <h1>🗺 地図表示</h1>
+  <div id="map"></div>
+  <script>
+    const map = L.map('map').setView([35.681236, 139.767125], 10);  // 東京駅座標
+
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: 'Map data &copy; OpenStreetMap contributors'
+    }).addTo(map);
+
+    L.marker([35.681236, 139.767125]).addTo(map)
+      .bindPopup('スタート地点: 東京駅')
+      .openPopup();
+  </script>
+</body>
+</html>
